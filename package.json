@@ -1,0 +1,39 @@
+{
+  "name": "social_networking_platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:api": "npm start --prefix api",
+    "start:frontend": "npm start --prefix frontend",
+    "start": "concurrently \"npm run start:api\" \"npm run start:frontend\"",
+    "deploy:api": "git subtree push --prefix api heroku master",
+    "format": "prettier --trailing-comma es5 --single-quote --write '**/*.{js,md,json}'"
+  },
+  "workspaces": [
+    "api",
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css,html}": [
+      "prettier --write '**/*.js'"
+    ]
+  },
+  "license": "MIT",
+  "description": "Create Social Network is a educational project. The main idea is to demonstrate how one can build a large scalable project with Javascript. However you get the core functionality of social network by running one command and then you can build more on top of that.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "JAY PATHAK"
+}
